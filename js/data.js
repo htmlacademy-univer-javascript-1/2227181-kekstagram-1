@@ -1,5 +1,4 @@
 import { randomInt } from './utils.js';
-
 const serverAddress = 'https://26.javascript.pages.academy/kekstagram/data';
 
 const commentsVariants = [
@@ -58,8 +57,9 @@ function showErrorLoading() {
   newElement.textContent = 'Ошибка загрузки изображений!';
   newElement.classList.add('error__title');
   div.appendChild(newElement);
-  div.setAttribute('style',  'padding-top: 200px;' );
-  newElement.setAttribute('style', 'line-height: 40px;  text-align: center;');
+  div.style.paddingTop = '200px';
+  newElement.style.lineHeight='40px';
+  newElement.style.textAlign='center';
   document.body.insertBefore(div,footer);
 }
 
@@ -71,6 +71,7 @@ function hideErrorLoading() {
 }
 
 function setRecieverImagesFromServer(resultGetter) { //resultGetter
+  //если изображения не загружаются, то и callback не вызывается
   fetch(serverAddress).then( (response) =>{
     if(response.ok){
       hideErrorLoading();
